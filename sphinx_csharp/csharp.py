@@ -811,6 +811,10 @@ class CSharpDomain(Domain):
         if target is None:
             # Fallback to contnode text if the target is None, the case for xrefs created by breathe inside docreftext
             target = contnode.astext()
+            
+        if 'btn' in node.attributes['classes']:
+            # ignore button references
+            return None
 
         # Get all objects that end with the initial target
         objtypes = self.objtypes_for_role(typ)
